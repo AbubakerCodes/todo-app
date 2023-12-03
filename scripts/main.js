@@ -21,8 +21,7 @@ function renderTodoList() {
                     <p>${todoItem} </p> 
                     <p>${todoDate} </p>           
                     <button 
-                        onclick = "todoList.splice(${index}, 1);
-                        renderTodoList();"
+                        onclick = "deleteTodoItem(${index});"
                     >Delete</button>
                 </input>`;
         todoHTML += todoItemHTML;
@@ -43,4 +42,12 @@ function addTodoItem() {
     // update my todo list
     renderTodoList();
     localStorage.setItem('todoList', JSON.stringify(todoList));
+}
+function deleteTodoItem(index) {
+    // Delete item from todo list array
+    todoList.splice(index, 1);
+    // Also update the local storage
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+    // Re-render the todolist
+    renderTodoList();
 }
