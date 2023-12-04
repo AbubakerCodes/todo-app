@@ -20,6 +20,7 @@ button {
     font-weight: bold;
     padding: 0.5em 1.5em;
     margin: 0;
+    cursor: pointer;
 }
 .add-todo-btn {
     background-color: green;
@@ -52,4 +53,8 @@ input {
     grid-template-columns: 1.5fr 0.6fr 0.4fr;
     align-items: center;
     text-align: left;
+}
+input:focus-visible {
+    border: 1px solid #ccc;
+    outline: none;
 }

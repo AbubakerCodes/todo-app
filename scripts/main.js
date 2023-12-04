@@ -14,20 +14,24 @@ addTodoBtnEle.addEventListener('click', addTodoItem);
 function renderTodoList() { 
     // Update myTodo list
     let todoHTML = '';
-    todoList.forEach(function(todoObj, index) {
+    todoList.forEach((todoObj, index) => {
         const todoItem = todoObj.name;
         const todoDate = todoObj.todoDate;
         const todoItemHTML = `
                     <p>${todoItem} </p> 
                     <p>${todoDate} </p>           
-                    <button 
-                        onclick = "deleteTodoItem(${index});"
-                    >Delete</button>
-                </input>`;
+                    <button class ="js-delete-todo-item-btn">Delete</button>`;
         todoHTML += todoItemHTML;
     });
     myTodoListEle.innerHTML = todoHTML;
-    
+    // Select all delete button after it's been added to the HTML
+    const deleteTodoBtnEle = document.querySelectorAll('.js-delete-todo-item-btn');
+    // Loop thru deletBtns node
+    deleteTodoBtnEle.forEach((deleteTodoBtn, index) => {
+        deleteTodoBtn.addEventListener('click', () => {
+            deleteTodoItem(index);
+        });
+    });
     // clear input field
     inputTodoEle.value = '';
     // clear date field
